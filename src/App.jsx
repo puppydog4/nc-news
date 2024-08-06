@@ -4,6 +4,7 @@ import { getArticles } from "./utils";
 import Spinner from "./Spinner";
 import Front from "./Front";
 import { Routes, Route } from "react-router-dom";
+import Article from "./Article";
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -27,6 +28,7 @@ export default function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<Front articles={articles} />} />
+        <Route path="/article/:id" element={<Article />} />
       </Routes>
     </>
   );

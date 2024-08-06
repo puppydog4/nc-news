@@ -27,7 +27,7 @@ const Search = styled("div")(({ theme }) => ({
 const SearchIconWrapper = styled("div")(({ theme }) => ({
   padding: theme.spacing(0, 2),
   height: "100%",
-  position: "absolute",
+  // position: "absolute",
   pointerEvents: "none",
   display: "flex",
   alignItems: "center",
@@ -55,7 +55,6 @@ export default function NavBar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
-        position="static"
         sx={{
           display: "flex",
           flexDirection: "row",
@@ -63,15 +62,15 @@ export default function NavBar() {
         }}
       >
         <Toolbar>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+          <AdbIcon sx={{ display: { md: "flex" }, mr: 1 }} />
           <Typography
             variant="h6"
             noWrap
             component="a"
             href="/"
             sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
+              mr: 1,
+              display: { md: "flex" },
               fontFamily: "monospace",
               fontWeight: 700,
               letterSpacing: ".3rem",
@@ -82,9 +81,7 @@ export default function NavBar() {
             NC-News
           </Typography>
         </Toolbar>
-        <Search
-          sx={{ marginBottom: "1rem", marginTop: "1rem", minWidth: "15%" }}
-        >
+        <Search sx={{ margin: "1rem", display: "flex", alignItems: "center" }}>
           <SearchIconWrapper>
             <SearchIcon />
           </SearchIconWrapper>

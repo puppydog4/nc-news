@@ -15,8 +15,15 @@ import {
   Link,
 } from "@mui/material";
 import { timeAgo } from "../utils/date-format";
+import { styled } from "@mui/system";
 
 export default function ArticleCard({ article }) {
+  const HoverCard = styled(Card)(({}) => ({
+    transition: "background-color 0.3s",
+    "&:hover": {
+      backgroundColor: "#f5f5f5",
+    },
+  }));
   return (
     <Box
       sx={{
@@ -28,11 +35,14 @@ export default function ArticleCard({ article }) {
         flexDirection: "column",
       }}
     >
-      <Card
+      <HoverCard
         sx={{
           borderRadius: "25px",
+          border: "none",
+          boxShadow: "none",
           position: "relative",
           display: "flex",
+          marginLeft: "15%",
           width: "50%",
           height: "50%",
           justifyContent: "center",
@@ -66,7 +76,8 @@ export default function ArticleCard({ article }) {
           <CardHeader title={article.title} />
           <CardMedia
             sx={{
-              width: "50%",
+              borderRadius: "25px",
+              width: "80%",
               height: "auto",
               maxHeight: "200",
               alignSelf: "center",
@@ -138,7 +149,7 @@ export default function ArticleCard({ article }) {
             By {article.author}
           </Typography>
         </Box>
-      </Card>
+      </HoverCard>
     </Box>
   );
 }

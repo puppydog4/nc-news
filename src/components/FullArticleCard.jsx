@@ -45,8 +45,8 @@ export default function FullArticleCard({ article }) {
         </Box>
         <CardMedia
           sx={{
-            width: "50%",
-            height: "auto",
+            width: "60%",
+            height: "40%",
             maxHeight: "200",
             alignSelf: "center",
           }}

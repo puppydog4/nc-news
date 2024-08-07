@@ -5,12 +5,14 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import AdbIcon from "@mui/icons-material/Adb";
 import { styled, alpha } from "@mui/material/styles";
+import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import InputBase from "@mui/material/InputBase";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { userContext } from "./UserContext";
 import { Login, Logout } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
+import TopicMenu from "./TopicsMenu";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -30,7 +32,6 @@ const Search = styled("div")(({ theme }) => ({
 const SearchIconWrapper = styled("div")(({ theme }) => ({
   padding: theme.spacing(0, 2),
   height: "100%",
-  // position: "absolute",
   pointerEvents: "none",
   display: "flex",
   alignItems: "center",
@@ -38,7 +39,7 @@ const SearchIconWrapper = styled("div")(({ theme }) => ({
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: "inherit",
+  color: "white",
   width: "100%",
   "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 0),
@@ -56,6 +57,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 2;
 export default function NavBar() {
   const { user, setUser } = useContext(userContext);
+  const [open, setOpen] = useState(false);
+
+  const toggleDrawer = (newOpen) => () => {
+    setOpen(newOpen);
+  };
 
   const handleLogin = (user) => {
     if (user === undefined) {
@@ -119,52 +125,74 @@ export default function NavBar() {
     );
   }
   return (
-    <Box sx={{ flexGrow: 1, margin: "5rem" }}>
-      <AppBar
-        sx={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-        }}
-      >
-        <Toolbar>
-          <AdbIcon sx={{ display: { xs: "flex", md: "flex" }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            NC-News
-          </Typography>
-        </Toolbar>
-        <Search
+    <>
+      <TopicMenu open={open} setOpen={setOpen} />
+      <Box sx={{ flexGrow: 1, margin: "5rem" }}>
+        <AppBar
           sx={{
-            margin: "1rem",
-            display: { md: "flex", xs: "flex" },
-            alignItems: "center",
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
           }}
         >
-          <SearchIconWrapper>
-            <SearchIcon />
-          </SearchIconWrapper>
-          <StyledInputBase
-            placeholder="Search…"
-            inputProps={{ "aria-label": "search" }}
-          />
-        </Search>
-        <Logged user={user} />
-      </AppBar>
-    </Box>
+          <Toolbar>
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              onClick={toggleDrawer(true)}
+              sx={{ mr: 2, display: { md: "none", xs: "flex" } }}
+            >
+              <MenuIcon />
+            </IconButton>
+            <IconButton href="/" color="white">
+              <AdbIcon
+                a="/"
+                sx={{
+                  display: { xs: "flex", md: "flex" },
+                  mr: 1,
+                  color: "white",
+                }}
+              />
+            </IconButton>
+            <Typography
+              variant="h5"
+              noWrap
+              component="a"
+              href="/"
+              sx={{
+                mr: 2,
+                display: { xs: "none", md: "flex" },
+                flexGrow: 1,
+                fontFamily: "monospace",
+                fontWeight: 700,
+                letterSpacing: ".3rem",
+                color: "inherit",
+                textDecoration: "none",
+              }}
+            >
+              NC-News
+            </Typography>
+          </Toolbar>
+          <Search
+            sx={{
+              margin: "1rem",
+              display: { md: "flex", xs: "flex" },
+              alignItems: "center",
+            }}
+          >
+            <SearchIconWrapper>
+              <SearchIcon />
+            </SearchIconWrapper>
+            <StyledInputBase
+              placeholder="Search…"
+              inputProps={{ "aria-label": "search" }}
+            />
+          </Search>
+          <Logged user={user} />
+        </AppBar>
+      </Box>
+    </>
   );
 }

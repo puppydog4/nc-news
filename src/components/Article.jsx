@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getArticleById } from "./utils";
+import { getArticleById } from "../utils/api";
 import CommentSection from "./CommentsSection";
 import { Box } from "@mui/material";
 import FullArticleCard from "./FullArticleCard";

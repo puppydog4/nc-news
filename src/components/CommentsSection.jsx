@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
-import { getCommentsForArticle } from "./utils";
+import { getCommentsForArticle } from "../utils/api";
 import { Box } from "@mui/material";
 import Comment from "./Comment";
 import CommentDialog from "./CommentDialog";

@@ -4,10 +4,14 @@ const apiClient = axios.create({
   baseURL: "https://news-project-ebx2.onrender.com/api",
 });
 
-export async function getArticles() {
+export async function getArticles(topic) {
   const {
     data: { articles },
-  } = await apiClient.get("/articles");
+  } = await apiClient.get("/articles", {
+    params: {
+      topic: topic,
+    },
+  });
   return articles;
 }
 
@@ -36,4 +40,9 @@ export async function postComment(article_id, commentData) {
 
 export async function deleteComment(comment_id) {
   await apiClient.delete(`/comments/${comment_id}`);
+}
+
+export async function getTopics() {
+  const { data } = await apiClient.get("/topics");
+  return data.topics;
 }

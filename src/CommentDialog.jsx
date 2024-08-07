@@ -29,6 +29,20 @@ export default function CommentDialog({ id, setNewComment }) {
     setAlert(false);
   };
 
+  const CommentButton = ({ user }) => {
+    if (user !== undefined) {
+      return (
+        <Button
+          sx={{ margin: "1rem" }}
+          variant="contained"
+          onClick={handleClickOpen}
+        >
+          COMMENT
+        </Button>
+      );
+    }
+  };
+
   async function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
@@ -61,13 +75,7 @@ export default function CommentDialog({ id, setNewComment }) {
           Your comment has been posted!
         </Alert>
       </Snackbar>
-      <Button
-        sx={{ margin: "1rem" }}
-        variant="contained"
-        onClick={handleClickOpen}
-      >
-        COMMENT
-      </Button>
+      <CommentButton user={user} />
       <Dialog
         maxWidth={"sm"}
         fullWidth={true}

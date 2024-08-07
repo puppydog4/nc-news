@@ -24,10 +24,13 @@ export default function FullArticleCard({ article }) {
     >
       <Card
         sx={{
+          borderRadius: "25px",
           position: "relative",
           display: "flex",
-          width: "100%",
-          height: "100%",
+          width: "80%",
+          height: "80%",
+          marginLeft: "auto",
+          marginRight: "5%",
           justifyContent: "center",
           flexDirection: "column",
         }}
@@ -41,7 +44,12 @@ export default function FullArticleCard({ article }) {
           </Typography>
         </Box>
         <CardMedia
-          sx={{ width: "100%", height: "auto", maxHeight: "200" }}
+          sx={{
+            width: "50%",
+            height: "auto",
+            maxHeight: "200",
+            alignSelf: "center",
+          }}
           component="img"
           height="300"
           image={article.article_img_url}

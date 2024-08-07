@@ -3,14 +3,22 @@ import { useEffect, useState } from "react";
 import { getCommentsForArticle } from "./utils";
 import { Box } from "@mui/material";
 import Comment from "./Comment";
-import CommentDIalog from "./CommentDialog";
+import CommentDialog from "./CommentDialog";
+import Spinner from "./Spinner";
 
 export default function CommentSection({ id }) {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     getCommentsForArticle(id).then((response) => setComments(response));
+    setIsLoading(false);
   }, [id, newComment]);
+
+  if (isLoading) {
+    return <Spinner />;
+  }
+
   return (
     <Box
       sx={{
@@ -19,9 +27,15 @@ export default function CommentSection({ id }) {
         flexDirection: "column",
       }}
     >
-      <CommentDIalog id={id} setNewComment={setNewComment} />
+      <CommentDialog id={id} setNewComment={setNewComment} />
       {comments.map((comment, index) => {
-        return <Comment key={index} comment={comment} />;
+        return (
+          <Comment
+            key={index}
+            comment={comment}
+            setNewComment={setNewComment}
+          />
+        );
       })}
     </Box>
   );

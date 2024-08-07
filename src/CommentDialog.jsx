@@ -6,10 +6,16 @@ import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
+import { Snackbar } from "@mui/material";
 import { postComment } from "./utils";
+import CheckIcon from "@mui/icons-material/Check";
+import Alert from "@mui/material/Alert";
+import { userContext } from "./UserContext";
 
-export default function CommentDIalog({ id, setNewComment }) {
+export default function CommentDialog({ id, setNewComment }) {
   const [open, setOpen] = React.useState(false);
+  const [alert, setAlert] = React.useState(false);
+  const { user } = React.useContext(userContext);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -19,8 +25,42 @@ export default function CommentDIalog({ id, setNewComment }) {
     setOpen(false);
   };
 
+  const closeAlert = () => {
+    setAlert(false);
+  };
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const formJson = Object.fromEntries(formData.entries());
+    const comment = formJson.comment;
+    const commentData = {
+      username: user,
+      body: comment,
+    };
+    await postComment(id, commentData);
+    setNewComment((oldState) => !oldState);
+    handleClose();
+    setAlert(true);
+  }
+
   return (
     <React.Fragment>
+      <Snackbar
+        open={alert}
+        autoHideDuration={6000}
+        onClose={closeAlert}
+        anchorOrigin={{ horizontal: "center", vertical: "top" }}
+      >
+        <Alert
+          icon={<CheckIcon fontSize="inherit" />}
+          onClose={closeAlert}
+          severity="success"
+          variant="filled"
+        >
+          Your comment has been posted!
+        </Alert>
+      </Snackbar>
       <Button
         sx={{ margin: "1rem" }}
         variant="contained"
@@ -36,18 +76,8 @@ export default function CommentDIalog({ id, setNewComment }) {
         PaperProps={{
           component: "form",
           autoComplete: "off",
-          onSubmit: async (event) => {
-            event.preventDefault();
-            const formData = new FormData(event.currentTarget);
-            const formJson = Object.fromEntries(formData.entries());
-            const comment = formJson.comment;
-            const commentData = {
-              username: "tickle122",
-              body: comment,
-            };
-            await postComment(id, commentData);
-            setNewComment((oldState) => !oldState);
-            handleClose();
+          onSubmit: (event) => {
+            handleSubmit(event);
           },
         }}
       >

@@ -3,15 +3,23 @@ import { getArticleById } from "./utils";
 import CommentSection from "./CommentsSection";
 import { Box } from "@mui/material";
 import FullArticleCard from "./FullArticleCard";
+import { useParams } from "react-router-dom";
+import Spinner from "./Spinner";
 
 export default function Article() {
-  const [article, setArticle] = useState([]);
-  const articleId = window.location.href.split("/").pop();
+  const [article, setArticle] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+
+  const { id } = useParams();
   useEffect(() => {
-    getArticleById(articleId).then((response) => {
+    getArticleById(id).then((response) => {
       setArticle(response);
+      setIsLoading(false);
     });
-  }, []);
+  }, [id]);
+  if (isLoading) {
+    return <Spinner />;
+  }
   return (
     <Box
       sx={{
@@ -22,7 +30,7 @@ export default function Article() {
     >
       <FullArticleCard article={article} />
 
-      <CommentSection id={articleId} />
+      <CommentSection id={id} />
     </Box>
   );
 }

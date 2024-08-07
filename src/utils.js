@@ -27,14 +27,13 @@ export async function getUser(username) {
 }
 
 export async function postComment(article_id, commentData) {
-  console.log(commentData);
   try {
-    const newComment = await apiClient.post(
-      `/articles/${article_id}/comments`,
-      commentData
-    );
-    console.log(newComment);
+    await apiClient.post(`/articles/${article_id}/comments`, commentData);
   } catch (error) {
     console.log(error);
   }
+}
+
+export async function deleteComment(comment_id) {
+  await apiClient.delete(`/comments/${comment_id}`);
 }

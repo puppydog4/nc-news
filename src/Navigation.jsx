@@ -119,7 +119,7 @@ export default function NavBar() {
     );
   }
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1, margin: "5rem" }}>
       <AppBar
         sx={{
           display: "flex",
@@ -133,7 +133,7 @@ export default function NavBar() {
             variant="h5"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            href="/"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },

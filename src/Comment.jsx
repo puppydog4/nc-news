@@ -10,7 +10,6 @@ import {
 } from "@mui/material";
 import { deleteComment, getUser } from "./utils";
 import { ArrowUpward, ArrowDownward } from "@mui/icons-material";
-import CheckIcon from "@mui/icons-material/Check";
 import { useContext, useEffect, useState } from "react";
 import { userContext } from "./UserContext";
 import { Delete } from "@mui/icons-material";

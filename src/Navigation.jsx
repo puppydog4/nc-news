@@ -1,13 +1,16 @@
+/* eslint-disable react/prop-types */
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
 import AdbIcon from "@mui/icons-material/Adb";
 import { styled, alpha } from "@mui/material/styles";
 import SearchIcon from "@mui/icons-material/Search";
 import InputBase from "@mui/material/InputBase";
-2;
+import { useContext } from "react";
+import { userContext } from "./UserContext";
+import { Login, Logout } from "@mui/icons-material";
+import { IconButton } from "@mui/material";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -52,6 +55,69 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 2;
 export default function NavBar() {
+  const { user, setUser } = useContext(userContext);
+
+  const handleLogin = (user) => {
+    if (user === undefined) {
+      setUser("tickle122");
+    }
+    if (typeof user === "string") {
+      setUser(undefined);
+    }
+  };
+
+  function Logged({ user }) {
+    if (user === undefined) {
+      return (
+        <Box
+          sx={{
+            mr: 1,
+            display: { md: "flex" },
+            fontFamily: "monospace",
+            fontWeight: 700,
+            letterSpacing: ".3rem",
+            color: "inherit",
+            textDecoration: "none",
+          }}
+        >
+          <IconButton
+            onClick={() => {
+              handleLogin(user);
+            }}
+            color="inherit"
+          >
+            <Login />
+          </IconButton>
+        </Box>
+      );
+    }
+    return (
+      <Box sx={{ display: "flex", alignItems: "center" }}>
+        <Typography
+          variant="h6"
+          sx={{
+            mr: 1,
+            display: { md: "flex", xs: "none" },
+            fontFamily: "monospace",
+            fontWeight: 700,
+            letterSpacing: ".3rem",
+            color: "inherit",
+            textDecoration: "none",
+          }}
+        >
+          Welcome {user}!
+        </Typography>
+        <IconButton
+          onClick={() => {
+            handleLogin(user);
+          }}
+          sx={{ m: "1rem", color: "white" }}
+        >
+          <Logout />
+        </IconButton>
+      </Box>
+    );
+  }
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
@@ -62,15 +128,16 @@ export default function NavBar() {
         }}
       >
         <Toolbar>
-          <AdbIcon sx={{ display: { md: "flex" }, mr: 1 }} />
+          <AdbIcon sx={{ display: { xs: "flex", md: "flex" }, mr: 1 }} />
           <Typography
-            variant="h6"
+            variant="h5"
             noWrap
             component="a"
-            href="/"
+            href="#app-bar-with-responsive-menu"
             sx={{
-              mr: 1,
-              display: { md: "flex" },
+              mr: 2,
+              display: { xs: "none", md: "flex" },
+              flexGrow: 1,
               fontFamily: "monospace",
               fontWeight: 700,
               letterSpacing: ".3rem",
@@ -81,7 +148,13 @@ export default function NavBar() {
             NC-News
           </Typography>
         </Toolbar>
-        <Search sx={{ margin: "1rem", display: "flex", alignItems: "center" }}>
+        <Search
+          sx={{
+            margin: "1rem",
+            display: { md: "flex", xs: "flex" },
+            alignItems: "center",
+          }}
+        >
           <SearchIconWrapper>
             <SearchIcon />
           </SearchIconWrapper>
@@ -90,10 +163,7 @@ export default function NavBar() {
             inputProps={{ "aria-label": "search" }}
           />
         </Search>
-        <Box sx={{ alignItems: "center", marginTop: "1rem" }}>
-          <Button color="inherit">Post</Button>
-          <Button color="inherit">Login</Button>
-        </Box>
+        <Logged user={user} />
       </AppBar>
     </Box>
   );

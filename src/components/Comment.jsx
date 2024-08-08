@@ -7,10 +7,8 @@ import {
   Button,
   Snackbar,
   Alert,
-  IconButton,
 } from "@mui/material";
 import { deleteComment, getUser } from "../utils/api";
-import { ArrowUpward, ArrowDownward } from "@mui/icons-material";
 import { useContext, useEffect, useState } from "react";
 import { userContext } from "./UserContext";
 import { Delete } from "@mui/icons-material";
@@ -83,7 +81,7 @@ export default function Comment({ comment, setNewComment }) {
             flexDirection: "row",
           }}
         >
-          <VoteButtons article={comment} />
+          <VoteButtons comment={comment} />
           <DeleteButton
             user={user}
             commentUser={commentUser}

@@ -45,6 +45,16 @@ export async function postComment(article_id, commentData) {
   }
 }
 
+export async function increaseVote(element, num) {
+  const { article_id, comment_id } = element;
+  if (article_id) {
+    await apiClient.patch(`/articles/${article_id}`, { inc_votes: num });
+  }
+  if (comment_id) {
+    await apiClient.patch(`/comments/${comment_id}`, { inc_votes: num });
+  }
+}
+
 export async function deleteComment(comment_id) {
   await apiClient.delete(`/comments/${comment_id}`);
 }

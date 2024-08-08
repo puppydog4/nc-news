@@ -33,8 +33,9 @@ export default function CommentDialog({ id, setNewComment }) {
     if (user !== undefined) {
       return (
         <Button
-          sx={{ margin: "1rem" }}
-          variant="contained"
+          aria-label="write your comment"
+          sx={{ margin: "1rem", color: "black" }}
+          variant="outlined"
           onClick={handleClickOpen}
         >
           COMMENT
@@ -77,6 +78,7 @@ export default function CommentDialog({ id, setNewComment }) {
       </Snackbar>
       <CommentButton user={user} />
       <Dialog
+        sx={{ color: "black" }}
         maxWidth={"sm"}
         fullWidth={true}
         open={open}
@@ -92,6 +94,7 @@ export default function CommentDialog({ id, setNewComment }) {
         <DialogTitle>Comment</DialogTitle>
         <DialogContent>
           <TextField
+            aria-label="write your comment here"
             autoFocus
             required
             margin="dense"
@@ -104,8 +107,20 @@ export default function CommentDialog({ id, setNewComment }) {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button type="submit">Post</Button>
+          <Button
+            sx={{ color: "black" }}
+            aria-label="Canel your comment"
+            onClick={handleClose}
+          >
+            Cancel
+          </Button>
+          <Button
+            sx={{ color: "black" }}
+            aria-label="Post your comment"
+            type="submit"
+          >
+            Post
+          </Button>
         </DialogActions>
       </Dialog>
     </React.Fragment>

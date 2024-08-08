@@ -39,11 +39,12 @@ export default function FullArticleCard({ article }) {
         <CardHeader title={article.title}></CardHeader>
         <Box sx={{ displa: "flex", margin: "1rem" }}>
           <Typography variant="body8">{"By "}</Typography>
-          <Typography variant="body8" sx={{ color: "orangered" }}>
+          <Typography variant="body8" sx={{ fontWeight: "bold" }}>
             {article.author}
           </Typography>
         </Box>
         <CardMedia
+          aria-label="article picture"
           sx={{
             width: "60%",
             height: "40%",
@@ -65,11 +66,11 @@ export default function FullArticleCard({ article }) {
           }}
         >
           <Box sx={{ display: "flex" }}>
-            <Button>
+            <Button aria-label="upvote comment">
               <ArrowUpward />
             </Button>
             <Typography sx={{ margin: "1.5rem" }}>{article.votes}</Typography>
-            <Button>
+            <Button aria-label="downvote comment">
               <ArrowDownward />
             </Button>
           </Box>

@@ -7,6 +7,7 @@ import {
   Button,
   Snackbar,
   Alert,
+  IconButton,
 } from "@mui/material";
 import { deleteComment, getUser } from "../utils/api";
 import { ArrowUpward, ArrowDownward } from "@mui/icons-material";
@@ -64,8 +65,12 @@ export default function Comment({ comment, setNewComment }) {
         sx={{ padding: 2, marginBottom: 2, maxWidth: "60%", minWidth: "60%" }}
       >
         <Box sx={{ display: "flex" }}>
-          <Avatar sx={{ marginRight: "1rem" }} src={commentUser.avatar_url} />
-          <Typography varian="body3" color="orangered">
+          <Avatar
+            aria-label="user avatar"
+            sx={{ marginRight: "1rem" }}
+            src={commentUser.avatar_url}
+          />
+          <Typography fontWeight="bold" variant="body3">
             {commentUser.username}
           </Typography>
         </Box>
@@ -77,13 +82,13 @@ export default function Comment({ comment, setNewComment }) {
             flexDirection: "row",
           }}
         >
-          <Button>
+          <IconButton aria-label="upbote comment">
             <ArrowUpward />
-          </Button>
+          </IconButton>
           <Typography sx={{ margin: "1.5rem" }}>{comment.votes}</Typography>
-          <Button>
+          <IconButton aria-label="downvote comment">
             <ArrowDownward />
-          </Button>
+          </IconButton>
           <DeleteButton
             user={user}
             commentUser={commentUser}

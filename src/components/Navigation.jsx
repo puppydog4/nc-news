@@ -114,6 +114,7 @@ export default function NavBar() {
           Welcome {user}!
         </Typography>
         <IconButton
+          aria-label="Login/Logout button"
           onClick={() => {
             handleLogin(user);
           }}
@@ -146,7 +147,7 @@ export default function NavBar() {
             >
               <MenuIcon />
             </IconButton>
-            <IconButton href="/" color="white">
+            <IconButton aria-label="home button" href="/" color="white">
               <AdbIcon
                 a="/"
                 sx={{
@@ -155,25 +156,23 @@ export default function NavBar() {
                   color: "white",
                 }}
               />
+              <Typography
+                variant="h5"
+                noWrap
+                sx={{
+                  mr: 2,
+                  display: { xs: "none", md: "flex" },
+                  flexGrow: 1,
+                  fontFamily: "monospace",
+                  fontWeight: 700,
+                  letterSpacing: ".3rem",
+                  color: "white",
+                  textDecoration: "none",
+                }}
+              >
+                NC-News
+              </Typography>
             </IconButton>
-            <Typography
-              variant="h5"
-              noWrap
-              component="a"
-              href="/"
-              sx={{
-                mr: 2,
-                display: { xs: "none", md: "flex" },
-                flexGrow: 1,
-                fontFamily: "monospace",
-                fontWeight: 700,
-                letterSpacing: ".3rem",
-                color: "inherit",
-                textDecoration: "none",
-              }}
-            >
-              NC-News
-            </Typography>
           </Toolbar>
           <Search
             sx={{

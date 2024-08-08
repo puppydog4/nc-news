@@ -18,6 +18,7 @@ import { timeAgo } from "../utils/date-format";
 import { styled } from "@mui/system";
 
 export default function ArticleCard({ article }) {
+  // eslint-disable-next-line no-empty-pattern
   const HoverCard = styled(Card)(({}) => ({
     transition: "background-color 0.3s",
     "&:hover": {
@@ -62,6 +63,7 @@ export default function ArticleCard({ article }) {
           }}
           underline="none"
           href={"/article/" + article.article_id}
+          aria-label="Link to article"
         >
           <Typography
             sx={{
@@ -75,6 +77,7 @@ export default function ArticleCard({ article }) {
           </Typography>
           <CardHeader title={article.title} />
           <CardMedia
+            alt={"picture for " + article.topic}
             sx={{
               borderRadius: "25px",
               width: "80%",
@@ -106,11 +109,11 @@ export default function ArticleCard({ article }) {
               alignItems: "center",
             }}
           >
-            <Button>
+            <Button aria-label="upvote button">
               <ArrowUpward />
             </Button>
             <Typography>{article.votes}</Typography>
-            <Button>
+            <Button aria-label="downvote button">
               <ArrowDownward />
             </Button>
           </Box>

@@ -1,19 +1,20 @@
+/* eslint-disable react/prop-types */
 import { useParams } from "react-router-dom";
 import ArticleCard from "./ArticleCard";
 import { useEffect, useState } from "react";
 import { getArticles } from "../utils/api";
 import Spinner from "./Spinner";
 
-export default function ArticlesByTopic() {
+export default function ArticlesByTopic({ sort }) {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const { topic } = useParams();
   useEffect(() => {
-    getArticles(topic).then((response) => {
+    getArticles(topic, sort).then((response) => {
       setArticles(response);
       setIsLoading(false);
     });
-  }, [topic]);
+  }, [topic, sort]);
   return isLoading ? (
     <Spinner />
   ) : (

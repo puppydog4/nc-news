@@ -11,8 +11,8 @@ import {
   CardMedia,
   CardContent,
   Typography,
-  Button,
   Link,
+  IconButton,
 } from "@mui/material";
 import { timeAgo } from "../utils/date-format";
 import { styled } from "@mui/system";
@@ -109,13 +109,13 @@ export default function ArticleCard({ article }) {
               alignItems: "center",
             }}
           >
-            <Button aria-label="upvote button">
+            <IconButton aria-label="upvote IconButton">
               <ArrowUpward />
-            </Button>
+            </IconButton>
             <Typography>{article.votes}</Typography>
-            <Button aria-label="downvote button">
+            <IconButton aria-label="downvote IconButton">
               <ArrowDownward />
-            </Button>
+            </IconButton>
           </Box>
           <Box
             sx={{

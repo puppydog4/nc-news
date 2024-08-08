@@ -109,7 +109,7 @@ export default function CommentDialog({ id, setNewComment }) {
         <DialogActions>
           <Button
             sx={{ color: "black" }}
-            aria-label="Canel your comment"
+            aria-label="Cancel your comment"
             onClick={handleClose}
           >
             Cancel

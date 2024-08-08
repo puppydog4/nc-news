@@ -4,14 +4,21 @@ const apiClient = axios.create({
   baseURL: "https://news-project-ebx2.onrender.com/api",
 });
 
-export async function getArticles(topic) {
+export async function getArticles(topic, sort) {
   const {
     data: { articles },
   } = await apiClient.get("/articles", {
     params: {
       topic: topic,
+      sort_by: sort,
     },
   });
+  return articles;
+}
+export async function getArticlesSorted(sort) {
+  const {
+    data: { articles },
+  } = await apiClient.get("/articles", { params: { sort_by: sort } });
   return articles;
 }
 

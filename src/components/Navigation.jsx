@@ -55,7 +55,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 2;
-export default function NavBar() {
+export default function NavBar({ setSort }) {
   const { user, setUser } = useContext(userContext);
   const [open, setOpen] = useState(false);
 
@@ -127,7 +127,7 @@ export default function NavBar() {
   }
   return (
     <>
-      <TopicMenu open={open} setOpen={setOpen} />
+      <TopicMenu open={open} setOpen={setOpen} setSort={setSort} />
       <Box sx={{ flexGrow: 1, margin: "5rem" }}>
         <AppBar
           sx={{

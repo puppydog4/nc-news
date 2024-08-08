@@ -9,29 +9,12 @@ import SideBar from "./TopicsBar";
 import ArticlesByTopic from "./TopicPage";
 
 export default function App() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [articles, setArticles] = useState([]);
-  useEffect(() => {
-    getArticles().then((response) => {
-      setArticles(response);
-      setIsLoading(false);
-    });
-  }, []);
-  if (isLoading) {
-    return (
-      <>
-        <NavBar />
-        <SideBar />
-        <Spinner />
-      </>
-    );
-  }
   return (
     <>
       <NavBar />
       <SideBar />
       <Routes>
-        <Route path="/" element={<Front articles={articles} />} />
+        <Route path="/" element={<Front />} />
         <Route path="/article/:id" element={<Article />} />
         <Route path="/:topic" element={<ArticlesByTopic />} />
       </Routes>

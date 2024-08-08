@@ -1,7 +1,4 @@
 import NavBar from "./Navigation";
-import { useEffect, useState } from "react";
-import { getArticles } from "../utils/api";
-import Spinner from "./Spinner";
 import Front from "./Front";
 import { Routes, Route } from "react-router-dom";
 import Article from "./Article";

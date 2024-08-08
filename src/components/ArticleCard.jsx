@@ -1,9 +1,5 @@
 /* eslint-disable react/prop-types */
-import {
-  ArrowDownward,
-  ArrowUpward,
-  ChatBubbleOutline,
-} from "@mui/icons-material";
+import { ChatBubbleOutline } from "@mui/icons-material";
 import {
   Box,
   Card,
@@ -12,10 +8,10 @@ import {
   CardContent,
   Typography,
   Link,
-  IconButton,
 } from "@mui/material";
 import { timeAgo } from "../utils/date-format";
 import { styled } from "@mui/system";
+import VoteButtons from "./VoteButtons";
 
 export default function ArticleCard({ article }) {
   // eslint-disable-next-line no-empty-pattern
@@ -26,133 +22,118 @@ export default function ArticleCard({ article }) {
     },
   }));
   return (
-    <Box
-      sx={{
-        width: "300",
-        height: "400",
-        display: "flex",
-        alignItems: "center",
-        margin: "1rem",
-        flexDirection: "column",
-      }}
-    >
-      <HoverCard
+    <>
+      <Box
         sx={{
-          borderRadius: "25px",
-          border: "none",
-          boxShadow: "none",
-          position: "relative",
+          width: "300",
+          height: "400",
           display: "flex",
-          marginLeft: "15%",
-          width: "50%",
-          height: "50%",
-          justifyContent: "center",
+          alignItems: "center",
+          margin: "1rem",
           flexDirection: "column",
         }}
       >
-        <Link
+        <HoverCard
           sx={{
-            color: "black",
+            borderRadius: "25px",
+            border: "none",
+            boxShadow: "none",
             position: "relative",
             display: "flex",
-            width: "100%",
-            height: "100%",
+            marginLeft: "15%",
+            width: "50%",
+            height: "50%",
             justifyContent: "center",
             flexDirection: "column",
-            underline: "none",
-          }}
-          underline="none"
-          href={"/article/" + article.article_id}
-          aria-label="Link to article"
-        >
-          <Typography
-            sx={{
-              alignSelf: "flex-start",
-              marginRight: "auto",
-              margin: "1rem",
-              marginBottom: "0",
-            }}
-          >
-            {timeAgo(article.created_at)} in T/{article.topic}
-          </Typography>
-          <CardHeader title={article.title} />
-          <CardMedia
-            alt={"picture for " + article.topic}
-            sx={{
-              borderRadius: "25px",
-              width: "80%",
-              height: "auto",
-              maxHeight: "200",
-              alignSelf: "center",
-            }}
-            component="img"
-            height="300"
-            image={article.article_img_url}
-          />
-          <CardContent>
-            <Typography variant="body2">{article.body}</Typography>
-          </CardContent>
-        </Link>
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "row",
           }}
         >
-          <Box
+          <Link
             sx={{
-              backgroundColor: "#E5EBEE",
-              borderRadius: "20px",
-              margin: "1rem",
+              color: "black",
+              position: "relative",
               display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
+              width: "100%",
+              height: "100%",
+              justifyContent: "center",
+              flexDirection: "column",
+              underline: "none",
             }}
+            underline="none"
+            href={"/article/" + article.article_id}
+            aria-label="Link to article"
           >
-            <IconButton aria-label="upvote IconButton">
-              <ArrowUpward />
-            </IconButton>
-            <Typography>{article.votes}</Typography>
-            <IconButton aria-label="downvote IconButton">
-              <ArrowDownward />
-            </IconButton>
-          </Box>
-          <Box
-            sx={{
-              backgroundColor: "#E5EBEE",
-              borderRadius: "15px",
-              margin: "1rem",
-              padding: "0.5rem",
-              alignItems: "center",
-              display: "flex",
-              flexDirection: "row",
-            }}
-          >
-            <ChatBubbleOutline sx={{ marginLeft: "1rem" }} />
             <Typography
               sx={{
-                marginLeft: "1rem",
-                marginRight: "1rem",
-                marginBottom: "0.25rem",
+                alignSelf: "flex-start",
+                marginRight: "auto",
+                margin: "1rem",
+                marginBottom: "0",
               }}
             >
-              {article.comment_count}
+              {timeAgo(article.created_at)} in T/{article.topic}
+            </Typography>
+            <CardHeader title={article.title} />
+            <CardMedia
+              alt={"picture for " + article.topic}
+              sx={{
+                borderRadius: "25px",
+                width: "80%",
+                height: "auto",
+                maxHeight: "200",
+                alignSelf: "center",
+              }}
+              component="img"
+              height="300"
+              image={article.article_img_url}
+            />
+            <CardContent>
+              <Typography variant="body2">{article.body}</Typography>
+            </CardContent>
+          </Link>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+            }}
+          >
+            <VoteButtons article={article} />
+            <Box
+              sx={{
+                backgroundColor: "#E5EBEE",
+                borderRadius: "15px",
+                margin: "1rem",
+                padding: "0.5rem",
+                alignItems: "center",
+                display: "flex",
+                flexDirection: "row",
+              }}
+            >
+              <ChatBubbleOutline sx={{ marginLeft: "1rem" }} />
+              <Typography
+                sx={{
+                  marginLeft: "1rem",
+                  marginRight: "1rem",
+                  marginBottom: "0.25rem",
+                }}
+              >
+                {article.comment_count}
+              </Typography>
+            </Box>
+
+            <Typography
+              sx={{
+                alignSelf: "flex-end",
+                marginBottom: "1rem",
+                marginLeft: "auto",
+                marginRight: "1rem",
+              }}
+              variant="body4"
+            >
+              By {article.author}
             </Typography>
           </Box>
-
-          <Typography
-            sx={{
-              alignSelf: "flex-end",
-              marginBottom: "1rem",
-              marginLeft: "auto",
-              marginRight: "1rem",
-            }}
-            variant="body4"
-          >
-            By {article.author}
-          </Typography>
-        </Box>
-      </HoverCard>
-    </Box>
+        </HoverCard>
+      </Box>
+    </>
   );
 }

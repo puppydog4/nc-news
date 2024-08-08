@@ -14,6 +14,7 @@ import { ArrowUpward, ArrowDownward } from "@mui/icons-material";
 import { useContext, useEffect, useState } from "react";
 import { userContext } from "./UserContext";
 import { Delete } from "@mui/icons-material";
+import VoteButtons from "./VoteButtons";
 
 export default function Comment({ comment, setNewComment }) {
   const [commentUser, setCommentUser] = useState("");
@@ -82,13 +83,7 @@ export default function Comment({ comment, setNewComment }) {
             flexDirection: "row",
           }}
         >
-          <IconButton aria-label="upbote comment">
-            <ArrowUpward />
-          </IconButton>
-          <Typography sx={{ margin: "1.5rem" }}>{comment.votes}</Typography>
-          <IconButton aria-label="downvote comment">
-            <ArrowDownward />
-          </IconButton>
+          <VoteButtons article={comment} />
           <DeleteButton
             user={user}
             commentUser={commentUser}

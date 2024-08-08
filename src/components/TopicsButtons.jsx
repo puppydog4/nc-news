@@ -16,22 +16,27 @@ export const StyledListItemButton = styled(ListItemButton)(
   })
 );
 export default function TopicsButtons({ topics, setSort }) {
-  const [selectedValue, setSelectedValue] = useState(0);
+  const [selectedValue, setSelectedValue] = useState(null);
   const handleClick = (value) => {
     setSelectedValue(value);
     setSort(value);
   };
   return (
-    <Box sx={{ overflow: "auto" }}>
+    <Box>
       <List>
+        <StyledListItemButton key={4} href="/">
+          <Home sx={{ marginRight: "0.5rem" }} /> Home
+        </StyledListItemButton>
+        <Divider />
         <StyledListItemButton
-          key={0}
+          key={1}
           selected={selectedValue === null}
           onClick={() => handleClick(null)}
         >
-          <Home sx={{ marginRight: "0.5rem" }} /> New
+          <NewReleases sx={{ marginRight: "0.5rem" }} /> New
         </StyledListItemButton>
         <StyledListItemButton
+          key={2}
           selected={selectedValue === "votes"}
           onClick={() => handleClick("votes")}
         >

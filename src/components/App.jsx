@@ -8,7 +8,6 @@ import { useState } from "react";
 
 export default function App() {
   const [sort, setSort] = useState(null);
-  console.log(sort);
   return (
     <>
       <NavBar setSort={setSort} />

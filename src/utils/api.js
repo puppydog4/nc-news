@@ -4,14 +4,21 @@ const apiClient = axios.create({
   baseURL: "https://news-project-ebx2.onrender.com/api",
 });
 
-export async function getArticles(topic) {
+export async function getArticles(topic, sort) {
   const {
     data: { articles },
   } = await apiClient.get("/articles", {
     params: {
       topic: topic,
+      sort_by: sort,
     },
   });
+  return articles;
+}
+export async function getArticlesSorted(sort) {
+  const {
+    data: { articles },
+  } = await apiClient.get("/articles", { params: { sort_by: sort } });
   return articles;
 }
 
@@ -35,6 +42,16 @@ export async function postComment(article_id, commentData) {
     await apiClient.post(`/articles/${article_id}/comments`, commentData);
   } catch (error) {
     console.log(error);
+  }
+}
+
+export async function increaseVote(element, num) {
+  const { article_id, comment_id } = element;
+  if (article_id) {
+    await apiClient.patch(`/articles/${article_id}`, { inc_votes: num });
+  }
+  if (comment_id) {
+    await apiClient.patch(`/comments/${comment_id}`, { inc_votes: num });
   }
 }
 

@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import { ArrowDownward, ArrowUpward } from "@mui/icons-material";
 import {
   Box,
   Card,
@@ -7,8 +6,8 @@ import {
   CardMedia,
   CardContent,
   Typography,
-  Button,
 } from "@mui/material";
+import VoteButtons from "./VoteButtons";
 
 export default function FullArticleCard({ article }) {
   return (
@@ -65,15 +64,7 @@ export default function FullArticleCard({ article }) {
             justifyContent: "space-between",
           }}
         >
-          <Box sx={{ display: "flex" }}>
-            <Button aria-label="upvote comment">
-              <ArrowUpward />
-            </Button>
-            <Typography sx={{ margin: "1.5rem" }}>{article.votes}</Typography>
-            <Button aria-label="downvote comment">
-              <ArrowDownward />
-            </Button>
-          </Box>
+          <VoteButtons article={article} />
         </Box>
       </Card>
     </Box>

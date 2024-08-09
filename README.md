@@ -1,5 +1,14 @@
 # NC - News
 
+## Table of Contents
+
+- [Background](#background)
+- [Features](#features)
+- [Installation](#installation)
+- [Technologies Used](#technologies-used)
+- [Usage](#usage)
+- [Backend API](#backend-api)
+
 ## Background
 
 NC-News is a social news aggregation, web content rating, and discussion website. The platform allows users to explore articles categorized by topics, upvote or downvote articles, and engage in discussions by adding comments. This project focuses solely on the frontend, built using Vite and React.
@@ -36,11 +45,11 @@ Open the app in your browser: By default, it should be available at http://local
 
 ## Technologies Used
 
-    Vite: Fast development build tool and environment.
-    React: JavaScript library for building user interfaces.
-    Axios: Promise-based HTTP client for making API requests.
-    React Router: For navigating between different pages in the app.
-    MUI Material UI: For React components.
+- Vite: Fast development build tool and environment.
+- React: JavaScript library for building user interfaces.
+- Axios: Promise-based HTTP client for making API requests.
+- React Router: For navigating between different pages in the app.
+- MUI Material UI: For React components.
 
 ## Usage
 

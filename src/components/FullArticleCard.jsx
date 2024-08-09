@@ -32,13 +32,26 @@ export default function FullArticleCard({ article }) {
           marginRight: "5%",
           justifyContent: "center",
           flexDirection: "column",
+          "@media (max-width: 600px)": {
+            width: "70%",
+            height: "70%",
+            marginLeft: "10%",
+          },
+          "@media (max-width: 400px)": {
+            width: "90%",
+            height: "90%",
+            marginLeft: "5%",
+          },
         }}
       >
         <CardHeader variant="body4" title={"T/" + article.topic} />
         <CardHeader title={article.title}></CardHeader>
-        <Box sx={{ displa: "flex", margin: "1rem" }}>
+        <Box sx={{ display: "flex", margin: "1rem" }}>
           <Typography variant="body8">{"By "}</Typography>
-          <Typography variant="body8" sx={{ fontWeight: "bold" }}>
+          <Typography
+            variant="body8"
+            sx={{ fontWeight: "bold", display: { xs: "none", sm: "block" } }}
+          >
             {article.author}
           </Typography>
         </Box>

@@ -66,7 +66,6 @@ export default function Comment({ comment, setNewComment }) {
           marginBottom: 2,
           width: "60%",
           "@media (max-width: 960px)": {
-            padding: "0",
             width: "90%",
           },
         }}

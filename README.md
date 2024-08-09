@@ -9,6 +9,10 @@
 - [Usage](#usage)
 - [Backend API](#backend-api)
 
+You can find the hosted version of the app at : https://nc-news-6f4ptk3nx-claudios-projects-77f12cb0.vercel.app/
+
+(it will need around 30 seconds to load on first load and might need to be refreshed a few times , this is due to the free hosting website putting the API in "sleep-mode" when not in use)
+
 ## Background
 
 NC-News is a social news aggregation, web content rating, and discussion website. The platform allows users to explore articles categorized by topics, upvote or downvote articles, and engage in discussions by adding comments. This project focuses solely on the frontend, built using Vite and React.

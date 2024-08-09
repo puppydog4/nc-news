@@ -34,11 +34,11 @@ export default function CommentDialog({ id, setNewComment }) {
       return (
         <Button
           aria-label="write your comment"
-          sx={{ margin: "1rem", color: "black" }}
+          sx={{ margin: "1rem", color: "black", marginBottom: "1.4rem" }}
           variant="outlined"
           onClick={handleClickOpen}
         >
-          COMMENT
+          POST COMMENT
         </Button>
       );
     }

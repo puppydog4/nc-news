@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import { getCommentsForArticle } from "../utils/api";
-import { Box } from "@mui/material";
+import { Box, Divider, Typography } from "@mui/material";
 import Comment from "./Comment";
 import CommentDialog from "./CommentDialog";
 import Spinner from "./Spinner";
@@ -31,7 +31,13 @@ export default function CommentSection({ id }) {
         },
       }}
     >
-      <CommentDialog id={id} setNewComment={setNewComment} />
+      <Box sx={{ display: "flex", marginLeft: "1rem" }}>
+        <Typography variant="h6" sx={{ m: "1rem", alignSelf: "flex-start" }}>
+          Comments
+        </Typography>
+        <CommentDialog id={id} setNewComment={setNewComment} />
+      </Box>
+      <Divider />
       {comments.map((comment, index) => {
         return (
           <Comment

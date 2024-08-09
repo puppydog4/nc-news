@@ -77,13 +77,8 @@ export default function NavBar({ setSort }) {
       return (
         <Box
           sx={{
-            mr: 1,
-            display: { md: "flex" },
-            fontFamily: "monospace",
-            fontWeight: 700,
-            letterSpacing: ".3rem",
-            color: "inherit",
-            textDecoration: "none",
+            display: "flex",
+            alignItems: "center",
           }}
         >
           <IconButton
@@ -118,7 +113,7 @@ export default function NavBar({ setSort }) {
           onClick={() => {
             handleLogin(user);
           }}
-          sx={{ m: "1rem", color: "white" }}
+          sx={{ color: "white" }}
         >
           <Logout />
         </IconButton>

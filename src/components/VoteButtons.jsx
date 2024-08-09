@@ -16,7 +16,7 @@ export default function VoteButtons({ article, comment }) {
       setVoteCount(comment.votes);
       setElement(comment);
     }
-  }, []);
+  }, [comment]);
 
   const handleUpvote = () => {
     if (userVote === "up") {

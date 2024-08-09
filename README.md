@@ -35,7 +35,7 @@ To run the project locally, follow these steps:
 
 #### Navigate to the project directory:
 
-    cd northcoders-news
+    cd nc-news
 
 #### Install dependencies:
 

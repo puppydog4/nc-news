@@ -97,7 +97,20 @@ export default function ArticleCard({ article }) {
               image={article.article_img_url}
             />
             <CardContent>
-              <Typography variant="body2">{article.body}</Typography>
+              <Typography
+                variant="body2"
+                sx={{
+                  display: "-webkit-box",
+                  WebkitBoxOrient: "vertical",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  WebkitLineClamp: 3,
+                  lineClamp: 3,
+                  height: "4.5em",
+                }}
+              >
+                {article.body}
+              </Typography>
             </CardContent>
           </Link>
           <Box

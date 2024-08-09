@@ -16,7 +16,7 @@ export async function getArticles(topic, sort) {
     });
     return articles;
   } catch (error) {
-    throw new Error(`${topic} does not exist`);
+    throw new Error(`Topic: ${topic} does not exist`);
   }
 }
 export async function getArticlesSorted(sort) {
@@ -31,7 +31,7 @@ export async function getArticleById(id) {
     const { data } = await apiClient.get(`/articles/${id}`);
     return data.article[0];
   } catch (error) {
-    throw new Error("There is nothing here. This Article does not exist");
+    throw new Error("There is nothing here. This Article does not exist.");
   }
 }
 

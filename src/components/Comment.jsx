@@ -82,12 +82,7 @@ export default function Comment({ comment, setNewComment }) {
             flexDirection: "row",
           }}
         >
-          <VoteButtons
-            onClick={() => {
-              setNewComment((oldState) => !oldState);
-            }}
-            comment={comment}
-          />
+          <VoteButtons comment={comment} />
           <DeleteButton
             user={user}
             commentUser={commentUser}

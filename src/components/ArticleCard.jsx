@@ -132,6 +132,7 @@ export default function ArticleCard({ article }) {
 
             <Typography
               sx={{
+                display: { xs: "none", sm: "flex" },
                 alignSelf: "flex-end",
                 marginBottom: "1rem",
                 marginLeft: "auto",

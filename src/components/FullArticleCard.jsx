@@ -19,6 +19,7 @@ export default function FullArticleCard({ article }) {
         alignItems: "center",
         margin: "1rem",
         flexDirection: "column",
+        flexWrap: "wrap",
       }}
     >
       <Card
@@ -46,12 +47,9 @@ export default function FullArticleCard({ article }) {
       >
         <CardHeader variant="body4" title={"T/" + article.topic} />
         <CardHeader title={article.title}></CardHeader>
-        <Box sx={{ display: "flex", margin: "1rem" }}>
+        <Box sx={{ ml: "2rem", m: "1rem" }}>
           <Typography variant="body8">{"By "}</Typography>
-          <Typography
-            variant="body8"
-            sx={{ fontWeight: "bold", display: { xs: "none", sm: "block" } }}
-          >
+          <Typography variant="body8" sx={{ fontWeight: "bold" }}>
             {article.author}
           </Typography>
         </Box>
@@ -75,6 +73,7 @@ export default function FullArticleCard({ article }) {
             display: "flex",
             flexDirection: "row",
             justifyContent: "space-between",
+            marginRight: "1rem",
           }}
         >
           <VoteButtons article={article} />

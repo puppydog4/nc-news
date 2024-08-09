@@ -33,15 +33,17 @@ export default function FullArticleCard({ article }) {
           marginRight: "5%",
           justifyContent: "center",
           flexDirection: "column",
-          "@media (max-width: 600px)": {
-            width: "70%",
-            height: "70%",
-            marginLeft: "10%",
+          "@media (max-width: 960px)": {
+            width: "100%",
+            height: "100%",
+            ml: "0",
+            mr: "0",
           },
           "@media (max-width: 400px)": {
-            width: "90%",
-            height: "90%",
-            marginLeft: "5%",
+            width: "100%",
+            height: "100%",
+            ml: "0",
+            mr: "0",
           },
         }}
       >
@@ -56,10 +58,20 @@ export default function FullArticleCard({ article }) {
         <CardMedia
           aria-label="article picture"
           sx={{
+            borderRadius: "5%",
             width: "60%",
             height: "40%",
             maxHeight: "200",
             alignSelf: "center",
+            "@media (max-width: 600px)": {
+              width: "70%",
+              height: "70%",
+            },
+            "@media (max-width: 400px)": {
+              width: "90%",
+              height: "90%",
+              marginLeft: "5%",
+            },
           }}
           component="img"
           height="300"

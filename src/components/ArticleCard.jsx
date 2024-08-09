@@ -41,19 +41,21 @@ export default function ArticleCard({ article }) {
             position: "relative",
             display: "flex",
             marginLeft: "15%",
-            width: "50%",
-            height: "50%",
+            width: "70%",
+            height: "70%",
             justifyContent: "center",
             flexDirection: "column",
-            "@media (max-width: 600px)": {
-              width: "70%",
-              height: "70%",
-              marginLeft: "10%",
+            "@media (max-width: 960px)": {
+              width: "100%",
+              height: "100%",
+              ml: "0",
+              mr: "0",
             },
             "@media (max-width: 400px)": {
-              width: "90%",
-              height: "90%",
-              marginLeft: "5%",
+              width: "100%",
+              height: "100%",
+              ml: "0",
+              mr: "0",
             },
           }}
         >
@@ -87,13 +89,17 @@ export default function ArticleCard({ article }) {
               alt={"picture for " + article.title}
               sx={{
                 borderRadius: "25px",
-                width: "80%",
-                height: "auto",
-                maxHeight: "200",
+                width: "60%",
                 alignSelf: "center",
-                "@media (max-width: 800px)": {
-                  width: "100%",
-                  height: "100%",
+                height: "60%",
+
+                "@media (max-width: 960px)": {
+                  width: "80%",
+                  height: "80%",
+                },
+                "@media (max-width: 600px)": {
+                  width: "90%",
+                  height: "90%",
                   marginLeft: "5%",
                 },
               }}

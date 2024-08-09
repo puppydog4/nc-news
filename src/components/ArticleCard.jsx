@@ -100,7 +100,6 @@ export default function ArticleCard({ article }) {
                 "@media (max-width: 600px)": {
                   width: "90%",
                   height: "90%",
-                  marginLeft: "5%",
                 },
               }}
               component="img"

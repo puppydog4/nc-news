@@ -91,6 +91,11 @@ export default function ArticleCard({ article }) {
                 height: "auto",
                 maxHeight: "200",
                 alignSelf: "center",
+                "@media (max-width: 800px)": {
+                  width: "100%",
+                  height: "100%",
+                  marginLeft: "5%",
+                },
               }}
               component="img"
               height="300"

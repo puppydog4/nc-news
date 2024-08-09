@@ -61,9 +61,21 @@ export default function Comment({ comment, setNewComment }) {
       </Snackbar>
       <Paper
         elevation={2}
-        sx={{ padding: 2, marginBottom: 2, maxWidth: "60%", minWidth: "60%" }}
+        sx={{
+          padding: 2,
+          marginBottom: 2,
+          width: "60%",
+          "@media (max-width: 960px)": {
+            padding: "0",
+            width: "90%",
+          },
+        }}
       >
-        <Box sx={{ display: "flex" }}>
+        <Box
+          sx={{
+            display: "flex",
+          }}
+        >
           <Avatar
             alt={"Avatr of " + commentUser.username}
             aria-label="user avatar"

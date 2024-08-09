@@ -26,6 +26,9 @@ export default function CommentSection({ id }) {
         alignItems: "center",
         flexDirection: "column",
         marginLeft: "10%",
+        "@media (max-width: 960px)": {
+          marginLeft: "0",
+        },
       }}
     >
       <CommentDialog id={id} setNewComment={setNewComment} />

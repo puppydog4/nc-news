@@ -65,6 +65,7 @@ export default function Comment({ comment, setNewComment }) {
       >
         <Box sx={{ display: "flex" }}>
           <Avatar
+            alt={"Avatr of " + commentUser.username}
             aria-label="user avatar"
             sx={{ marginRight: "1rem" }}
             src={commentUser.avatar_url}

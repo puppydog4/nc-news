@@ -5,6 +5,7 @@ import Article from "./Article";
 import SideBar from "./TopicsBar";
 import ArticlesByTopic from "./TopicPage";
 import { useState } from "react";
+import ErrorPage from "./ErrorPage";
 
 export default function App() {
   const [sort, setSort] = useState(null);
@@ -16,6 +17,7 @@ export default function App() {
         <Route path="/" element={<Front sort={sort} />} />
         <Route path="/article/:id" element={<Article />} />
         <Route path="/:topic" element={<ArticlesByTopic sort={sort} />} />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </>
   );

@@ -5,15 +5,19 @@ const apiClient = axios.create({
 });
 
 export async function getArticles(topic, sort) {
-  const {
-    data: { articles },
-  } = await apiClient.get("/articles", {
-    params: {
-      topic: topic,
-      sort_by: sort,
-    },
-  });
-  return articles;
+  try {
+    const {
+      data: { articles },
+    } = await apiClient.get("/articles", {
+      params: {
+        topic: topic,
+        sort_by: sort,
+      },
+    });
+    return articles;
+  } catch (error) {
+    throw new Error(`${topic} does not exist`);
+  }
 }
 export async function getArticlesSorted(sort) {
   const {
@@ -23,8 +27,12 @@ export async function getArticlesSorted(sort) {
 }
 
 export async function getArticleById(id) {
-  const { data } = await apiClient.get(`/articles/${id}`);
-  return data.article[0];
+  try {
+    const { data } = await apiClient.get(`/articles/${id}`);
+    return data.article[0];
+  } catch (error) {
+    throw new Error("There is nothing here. This Article does not exist");
+  }
 }
 
 export async function getCommentsForArticle(id) {
@@ -38,11 +46,7 @@ export async function getUser(username) {
 }
 
 export async function postComment(article_id, commentData) {
-  try {
-    await apiClient.post(`/articles/${article_id}/comments`, commentData);
-  } catch (error) {
-    console.log(error);
-  }
+  await apiClient.post(`/articles/${article_id}/comments`, commentData);
 }
 
 export async function increaseVote(element, num) {

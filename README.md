@@ -27,6 +27,10 @@ The primary goal of this project was to solidify the understanding of creating a
 
 ## Installation
 
+Prerequisites
+
+    Node.js: v22.0.0 or higher
+
 To run the project locally, follow these steps:
 
 #### Clone the repository:

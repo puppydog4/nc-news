@@ -7,7 +7,6 @@ You can find the hosted version of the app at : https://nc-news-6f4ptk3nx-claudi
 ## Table of Contents
 
 - [Background](#background)
-- [Features](#features)
 - [Installation](#installation)
 - [Technologies Used](#technologies-used)
 - [Usage](#usage)

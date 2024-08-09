@@ -53,10 +53,10 @@ Open the app in your browser: By default, it should be available at http://local
 
 ## Usage
 
-- Browse Articles: On the homepage, you'll find a list of articles divided into topics. Click on any article to view its details.
+- Browse Articles: On the homepage, you'll find a list of articles with their related topics. Click on any article to view its details.
 - Vote on Articles: Use the upvote or downvote buttons on an article to rate it.
 - Add a Comment: Scroll to the comments section on an article's page and submit your comment.
-- Edit/Delete a Comment: After adding a comment, you can edit or delete it directly.
+- Delete a Comment: After adding a comment, you can delete it directly.
 
 ## Backend API
 

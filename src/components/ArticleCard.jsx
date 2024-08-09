@@ -45,6 +45,16 @@ export default function ArticleCard({ article }) {
             height: "50%",
             justifyContent: "center",
             flexDirection: "column",
+            "@media (max-width: 600px)": {
+              width: "70%",
+              height: "70%",
+              marginLeft: "10%",
+            },
+            "@media (max-width: 400px)": {
+              width: "90%",
+              height: "90%",
+              marginLeft: "5%",
+            },
           }}
         >
           <Link

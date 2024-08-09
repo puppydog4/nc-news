@@ -74,7 +74,7 @@ export default function ArticleCard({ article }) {
             </Typography>
             <CardHeader title={article.title} />
             <CardMedia
-              alt={"picture for " + article.topic}
+              alt={"picture for " + article.title}
               sx={{
                 borderRadius: "25px",
                 width: "80%",
